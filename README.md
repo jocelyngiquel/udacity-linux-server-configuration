@@ -17,6 +17,7 @@ Open a terminal on your machine and connect with the following command
 To update and upgrade the various packages on the instance run simultaneously the 2 following commands
 ```sudo apt-get update```
 ```sudo apt-get upgrade```
+Then run ```sudo apt-get dist-upgrade``` to install packages kept back
 
 ### User creation and SSH connection
 Create a new user. Provide a password and details when prompted
@@ -57,6 +58,10 @@ To enable the firewall, use:
 ```sudo ufw enable```
 To check the status of the firewall, use:
 ```sudo ufw status```
+
+If the port 22 is still allowed, run
+```sudo ufw deny 22```
+Then rerun ```sudo ufw status``` for a last check
 
 ### Switch connection port from 22 to 2200, and remove root access
 Change the port 22 to 2200 by amending the ```sshd_config``` file
@@ -223,6 +228,7 @@ https://libraries.io/github/golgtwins/Udacity-P7-Linux-Server-Configuration
 https://github.com/SteveWooding/fullstack-nanodegree-linux-server-config
 https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
 https://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/
+https://serverfault.com/questions/265410/ubuntu-server-message-says-packages-can-be-updated-but-apt-get-does-not-update
 https://knowledge.udacity.com/questions/7685
 https://knowledge.udacity.com/questions/858
 https://knowledge.udacity.com/questions/1009
