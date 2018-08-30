@@ -59,8 +59,8 @@ To enable the firewall, use:
 To check the status of the firewall, use:
 ```sudo ufw status```
 
-If the port 22 is still allowed, run
-```sudo ufw deny 22```
+If the port 22/tcp is still allowed, run
+```sudo ufw deny 22/tcp```
 Then rerun ```sudo ufw status``` for a last check
 
 ### Switch connection port from 22 to 2200, and remove root access
