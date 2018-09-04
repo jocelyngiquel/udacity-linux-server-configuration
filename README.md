@@ -3,7 +3,7 @@ Configuring a Linux server to host a web app securely.
 
 # Server details
 Based on Amazon Lightsail service, the server is linux based and runs Ubuntu 16.04 LTS - Xenial (HVM)
-Application URL: http://18.196.194.53.xip.io
+Application URL: --- (the service has been stopped)
 
 # Configuration steps
 ### Launching the server on AWS Lightsail
@@ -134,7 +134,7 @@ Configure and enable a new vitural host
 and add the following content
 ```
 <VirtualHost *:80>
-    ServerAlias http://18.196.194.53.xip.io
+    ServerAlias --- the server URL
     ServerAdmin grader@18.196.194.53
     WSGIDaemonProcess catalog python-path=/var/www/catalog:/var/www/catalog/venv/lib/python2.7/site-packages
     WSGIProcessGroup catalog
@@ -194,7 +194,7 @@ Log out from PostgreSQL ```\q```
 
 ### Update application files
 As mentioned above, the git repository you cloned was not designed to run on a Ubuntu server. In order to run there is a couple of change to do on the code.
-1. No client_secrets.json is provided on github. In order to run, the user need to set up the google Oauth with http://console.developers.google.com/. From the credentials manager, after having set up the URL (http://18.196.194.53.xip.io, http://18.196.194.53.xip.io/login, http://18.196.194.53.xip.io/gconnect), save the client_secrets.json file under /var/www/catalog/catalog. The name and the destination path are important. 
+1. No client_secrets.json is provided on github. In order to run, the user need to set up the google Oauth with http://console.developers.google.com/. From the credentials manager, after having set up the URL, save the client_secrets.json file under /var/www/catalog/catalog. The name and the destination path are important. 
 2. Change ```project.py``` into ```__init__.py```
 3. update the absolute path for client_secrets.json in ```__init__.py```
 4. Paste the client_id from the client_secrets.json into /templates/login.html, at the place of PLACE_YOUR_GOOGLE_CLIENT_ID_HERE
@@ -203,10 +203,7 @@ As mentioned above, the git repository you cloned was not designed to run on a U
 7. in ```__init__.py```, remove the SQLite specific arguments ```connect_args``` and ```poolclass```
 
 ### Update Oauth
-Into the Google Developers Console -> API Manager -> Credentials, in the web client under "Authorized JavaScript origins", update the URL to:
-- http://18.196.194.53.xip.io
-- http://18.196.194.53.xip.io/login
-- http://18.196.194.53.xip.io/gconnect
+Into the Google Developers Console -> API Manager -> Credentials, in the web client under "Authorized JavaScript origins", update the URL
 
 ### One last step
 If the virtual environment is deactivated, activate it again
